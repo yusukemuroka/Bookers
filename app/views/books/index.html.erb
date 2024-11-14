@@ -1,0 +1,40 @@
+<body>
+<h1 class="head">Books</h1>
+<div>
+<table>
+<tr>
+<th>Title</th><th>Body</th>
+</tr>
+<% @books.each do |book| %>
+    <tr>
+    <td><%= book.title %></td>
+    <td><%= book.body %></td>
+    <td><span class="link_button"><%= link_to 'Show' , book_path(book.id) %></span></td>
+    <td><span class="link_button"><%= link_to 'Edit' , edit_book_path(book.id) %></span></td>
+    <td><span class="link_button"><%= link_to 'Destroy' ,destroy_book_path(book.id) , method: :delete ,data: { confirm: "Are you sure?"} %></span></td>
+    </tr>
+    <% end %>
+    </table>
+</div>
+
+<div class="error">
+  <%= flash.now[:notice] %>
+</div>
+<h2 class="head">New book</h2>
+<%= form_with model: @book do |f| %>
+
+    <div class="box">
+    <p>Title</p>
+    <%= f.text_field :title %>
+    </div>
+
+    <div class="box">
+    <p>Body</p>
+    <%= f.text_area :body %>
+    </div>
+
+    <div class="box"><%= f.submit 'Create Book' %></div>
+<% end %>
+</body>
+
+

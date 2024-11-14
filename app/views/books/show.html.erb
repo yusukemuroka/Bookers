@@ -1,0 +1,10 @@
+<div class="success">
+  <%= flash[:notice] %>
+</div>
+<div class="content"><h4 class="caption">Title: </h4><%= @book.title %></div>
+
+<div class="content"><h4 class="caption">Body: </h4><%= @book.body %></div>
+
+<span class="link_button"><%= link_to 'Edit' , edit_book_path(@book.id) %></span> |
+<span class="link_button"><%= link_to 'Back' , books_path %></span>
+</body>
